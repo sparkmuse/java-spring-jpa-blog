@@ -4,14 +4,20 @@ import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.hibernate.validator.constraints.Length;
 
-
+@Entity
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String lead;
+    @Column(length = 1000000)
+    @Lob
     private String body;
     private String author;
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     public Post() {
